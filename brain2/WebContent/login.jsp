@@ -5,6 +5,7 @@
 System.out.println("--------------------login.jsp--------------------");
 String result =request.getParameter("result");
 String id = request.getParameter("id");
+String rresult = request.getParameter("regiresult");
 if(result != null){
 if(result.equals("idno")) 
 {%>
@@ -20,7 +21,14 @@ document.userinput.id.value=id;
 document.userinput.pw.value="";
 document.userinput.pw.focus();
 </script>
-<%}} %>
+<%}
+if(result.equals("regisuccess")) 
+{%>
+<script language="javascript">
+alert("회원가입 성공했습니다 로그인 해 주세요");
+document.userinput.id.value="";
+</script>
+<%}}%>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="style.css" />
@@ -82,7 +90,19 @@ document.userinput.pw.focus();
         <br />
         <div class="header">
             <div class="title">&nbsp;Main Page</div>
-            <div class="menu"><img src="image/menubar.png" /></div>
+            <div class="menu">
+            <div class="dropdown" style="float:right;">
+                <button class="dropbtn"><img src="image/menubar.png" width="30" height="30" /></button>
+                <div class="dropdown-content">
+                    <a href="login.jsp">로그인</a>
+                    <a href="register.jsp">회원 가입</a>
+                    <a href="alarm.jsp">알림</a>
+                    <a href="makethematch.jsp">매치 생성</a>
+                    <a href="jointhematch.jsp">매치 참가</a>
+                    <a href="mypage.jsp">마이 페이지</a>
+                </div>
+            </div>
+        </div>
         </div>
     </header>
     <article>

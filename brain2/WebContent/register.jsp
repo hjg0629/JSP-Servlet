@@ -130,7 +130,7 @@ System.out.println("--------------------register.jsp--------------------");
                 <div class="col-75">
                     <input onchange ="test();" type="text" id="id" name="id" placeholder="ID" maxlength="10"><br />
                     <br /><input type="button" name="confirm_id" value="checkid" onclick="openConfirmid(this.form)" />
-                    <input onchange="chkchange()" readonly type="textarea" id="idchk" name="idchk" value="ID중복체크 를 해주세요.">
+                    <input onchange="chkchange()" readonly type="textbox" id="idchk" name="idchk" value="ID중복체크 를 해주세요.">
                 </div>
             </div>
             <div class="row">
@@ -154,8 +154,8 @@ System.out.println("--------------------register.jsp--------------------");
                     <label for="email">E-mail</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="email1" name="email1" placeholder="Email" maxlength="10">
-                   @<input type="text" id="email2" name="email2" placeholder="Email2" maxlength="10">
+                    <input type="textbox" id="email1" name="email1" placeholder="Email" maxlength="10">
+                   @<input type="textbox" id="email2" name="email2" placeholder="Email2" maxlength="10">
                     <select name="endomain" id="sel_mail" onchange="chgdomain3();" >
                     <option value="">직접 입력</option>
                     <option value="daum.net">다음</option>

@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.sql.*;
 import javax.servlet.*;
 
@@ -16,6 +18,8 @@ import javax.servlet.*;
 public class RegisterProc extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.invalidate();
 		request.setCharacterEncoding("euc-kr");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -40,13 +44,7 @@ public class RegisterProc extends HttpServlet {
 			int result = pstmt.executeUpdate();
 			String pr= null;
 			if(result == 1) {
-				  PrintWriter out = response.getWriter(); 
-				    out.println("<html><body>"); 
-				    out.println("<script type=\"text/javascript\">"); 
-				    out.println("var popwin = window.open(\"pageA.jsp\")"); 
-				    out.println("setTimeout(function(){ popwin.close(); window.location.href='pageB.jsp';},5000)"); 
-				    out.println("</script>"); 
-				    out.println("</body></html>");
+				    pr = "regisuccess";
 				response.sendRedirect("login.jsp?result="+pr);
 			}
 			else response.sendRedirect("regiser.jsp");

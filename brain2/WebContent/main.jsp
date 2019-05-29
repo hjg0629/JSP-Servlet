@@ -22,11 +22,6 @@ alert("글 작성 성공!");
 
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<style>
-
-	</style>
-
 </head>
 <body>
 	<header>
