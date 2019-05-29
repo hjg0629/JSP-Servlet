@@ -10,7 +10,7 @@ import java.sql.*;
 import java.sql.Date;
 import vo.Myconn;
 import vo.MatchVO;
-import dao.MakeMatchDAO;
+import dao.MatchDAO;
 import java.util.*;
 @WebServlet("/MakeAsportsProc")
 public class MakeAsportsProc extends HttpServlet {
@@ -41,7 +41,7 @@ public class MakeAsportsProc extends HttpServlet {
 			vo.setFlag2(request.getParameter("AEvent"));
 			vo.setNeedman(needman);
 			vo.setNowman(nowman);
-			int result = MakeMatchDAO.Insert(vo);
+			int result = MatchDAO.Insert(vo);
 			if(result == 1) {
 				System.out.println("글쓰기 성공");
 			}
