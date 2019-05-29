@@ -1,6 +1,6 @@
 package vo;
 import java.sql.Timestamp;
-import java.util.*;
+
 public class MatchVO {
 	private int seqNo;
 	private Timestamp seqDate;
@@ -94,5 +94,4 @@ public class MatchVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	
 }

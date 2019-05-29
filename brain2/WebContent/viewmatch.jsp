@@ -3,13 +3,13 @@
 <%@page import="vo.MemberVO"%>
 <%@page import="dao.MemberDAO"%>
 <%@ page import="java.io.PrintWriter"%>
-<%@ page import="dao.BBSListActionDAO"%>
+<%@ page import="dao.MatchDAO"%>
 <%@ page import="vo.MatchVO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html>
 <%
-System.out.println("--------------------viewmatch.jsp--------------------");
+	System.out.println("--------------------viewmatch.jsp--------------------");
 
 	String id = (String) session.getAttribute("id");
 	System.out.printf("now id : %s\n", id);
@@ -40,8 +40,7 @@ System.out.println("--------------------viewmatch.jsp--------------------");
 		out.println("location.href = 'jointhematch.jsp'");
 		out.println("</script>");
 	}
-	MatchVO match = new BBSListActionDAO().getMatches(seqNo);
-	
+	MatchVO match = new MatchDAO().getMatches(seqNo);
 %>
 <html>
 <head>
@@ -109,11 +108,11 @@ a:hover {
 				<tbody>
 					<tr>
 						<td colspan="2" style="width: 20px">글 제목</td>
-						<td colspan="2">a</td>
+						<td colspan="2"><%=match.getTitle() %></td>
 					</tr>
 					<tr>
 						<td colspan="2">작성자</td>
-						<td colspan="2"><%=match.getSeqNo() %></td>
+						<td colspan="2"><%=match.getWriter() %></td>
 					</tr>
 					<tr>
 						<td colspan="2">flag1</td>

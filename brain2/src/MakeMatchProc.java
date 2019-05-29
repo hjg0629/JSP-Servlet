@@ -13,10 +13,9 @@ import java.sql.Date;
 import vo.Myconn;
 import vo.MatchVO;
 import vo.MemberVO;
-import dao.MakeMatchDAO;
+import dao.MatchDAO;
 import dao.MemberDAO;
 
-import java.util.*;
 @WebServlet("/MakeMatchProc")
 public class MakeMatchProc extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +39,7 @@ public class MakeMatchProc extends HttpServlet {
 			vo.setTitle(request.getParameter("title"));
 			vo.setStime(st);
 			vo.setEtime(et);
-			vo.setWriter((String)session.getAttribute("id"));
+			vo.setWriter(session.getAttribute("id").toString());
 			vo.setContents(request.getParameter("etc"));
 			vo.setAddr(request.getParameter("place"));
 			vo.setTeamflag(tf);
@@ -49,7 +48,7 @@ public class MakeMatchProc extends HttpServlet {
 			vo.setFlag2(request.getParameter("Event"));
 			vo.setNeedman(needman);
 			vo.setNowman(nowman);
-			int result = MakeMatchDAO.Insert(vo);
+			int result = MatchDAO.Insert(vo);
 			String pr = null;
 			if(result == 1) {
 				System.out.println("MakeMatchProc : Match Making ¼º°ø!");

@@ -2,12 +2,12 @@
 <%@page import="vo.MemberVO" %>
 <%@page import="dao.MemberDAO" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="dao.BBSListActionDAO" %>
+<%@ page import="dao.MatchDAO" %>
 <%@ page import="vo.MatchVO" %>
 <%@ page import="java.util.ArrayList" %>
 ﻿<!DOCTYPE html>
 <%
-System.out.println("--------------------jointhematch.jsp--------------------");
+	System.out.println("--------------------jointhematch.jsp--------------------");
 	String id = (String)session.getAttribute("id");
 	if(id == null){
 		System.out.println("로그인 미완료 : login.jsp로 이동합니다....\n");
@@ -60,7 +60,7 @@ if(request.getParameter("pageNumber")!=null){
         <a href="login.jsp">로그인</a> | <a href="register.jsp">회원가입</a>
          <%
          	} 
-                           else {
+                                    else {
          %>
           <a href="mypage.jsp"><%=id%></a> | <a href="LogoutProc">로그아웃</a>
         <%
@@ -87,12 +87,13 @@ if(request.getParameter("pageNumber")!=null){
 				<th style="background-color: #eeeeee; text-align:center;">종료</th>
 				<th style="background-color: #eeeeee; text-align:center;">최대인원</th>
 				<th style="background-color: #eeeeee; text-align:center;">참가인원</th>
+				<th style="background-color: #eeeeee; text-align:center;">작성자</th>
 			</tr>
 		</thead>
 		<tbody>
 		<%
 			MatchVO match = new MatchVO();
-				ArrayList<MatchVO> list = BBSListActionDAO.getList(pageNumber);
+				ArrayList<MatchVO> list = MatchDAO.getList(pageNumber);
 				for(int i=0;i<list.size();i++){
 		%>
 			<tr>
@@ -102,6 +103,7 @@ if(request.getParameter("pageNumber")!=null){
 				<td><%=list.get(i).getEtime()%></td>
 				<td><%=list.get(i).getNeedman()%></td>
 				<td><%=list.get(i).getNowman()%></td>
+				<td><%=list.get(i).getWriter()%></td>
 			</tr>
 			<%
 				}
@@ -113,7 +115,7 @@ if(request.getParameter("pageNumber")!=null){
 	%>
 	<a href="jointhematch.jsp?pageNumber=<%=pageNumber-1%>">이전</a>
 	<%
-		} if(BBSListActionDAO.nextPage(pageNumber+1)){
+		} if(MatchDAO.nextPage(pageNumber+1)){
 	%>
 	<a href="jointhematch.jsp?pageNumber=<%=pageNumber+1 %>">다음</a>
 	<%

@@ -24,7 +24,7 @@
     <servlet-name>UpdateG</servlet-name>
     <servlet-class>UpdateG</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>ReaderG</servlet-name>
     <servlet-class>ReaderG</servlet-class>
   </servlet>
@@ -52,7 +52,7 @@
     <servlet-name>UpdateG</servlet-name>
     <url-pattern>/UpdateG</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ReaderG</servlet-name>
     <url-pattern>/ReaderG</url-pattern>
   </servlet-mapping>
