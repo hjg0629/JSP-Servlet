@@ -2,6 +2,7 @@
     pageEncoding="utf8"%>
 ﻿<!DOCTYPE html>
 <%
+System.out.println("--------------------login.jsp--------------------");
 String result =request.getParameter("result");
 String id = request.getParameter("id");
 if(result != null){

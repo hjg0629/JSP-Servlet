@@ -16,6 +16,18 @@
     <servlet-name>ConfirmId</servlet-name>
     <servlet-class>ConfirmId</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>MakeMatchProc</servlet-name>
+    <servlet-class>MakeMatchProc</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateG</servlet-name>
+    <servlet-class>UpdateG</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>ReaderG</servlet-name>
+    <servlet-class>ReaderG</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>RegisterProc</servlet-name>
     <url-pattern>/RegisterProc</url-pattern>
@@ -31,5 +43,17 @@
   <servlet-mapping>
     <servlet-name>LogoutProc</servlet-name>
     <url-pattern>/LogoutProc</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MakeMatchProc</servlet-name>
+    <url-pattern>/MakeMatchProc</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateG</servlet-name>
+    <url-pattern>/UpdateG</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>ReaderG</servlet-name>
+    <url-pattern>/ReaderG</url-pattern>
   </servlet-mapping>
 </web-app>

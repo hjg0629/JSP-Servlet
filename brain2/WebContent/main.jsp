@@ -2,9 +2,19 @@
     pageEncoding="utf8"%>
 ﻿<!DOCTYPE html>
 <%
+System.out.println("--------------------main.jsp--------------------");
 String id = (String)session.getAttribute("id");
-System.out.printf("now id : %s\n",id);
+if(id == null){
+	System.out.println("로그인 미완료 \n");
+}
+else System.out.printf("Now User ID : %s\n",id);
+String result = request.getParameter("result");
+if(result != null){
 %>
+<script language="javascript">
+alert("글 작성 성공!");
+</script>
+<%result =null;} %>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
@@ -31,7 +41,19 @@ System.out.printf("now id : %s\n",id);
         <br />
             <div class="header">
 		        <div class="title">&nbsp;Main Page</div>
-		        <div class="menu"><img src="image/menubar.png" /></div>
+		       <div class="menu">
+           		 <div class="dropdown" style="float:right;">
+                <button class="dropbtn"><img src="image/menubar.png" width="30" height="30" /></button>
+                <div class="dropdown-content">
+                    <a href="login.jsp">로그인</a>
+                    <a href="register.jsp">회원 가입</a>
+                    <a href="alarm.jsp">알림</a>
+                    <a href="makethematch.jsp">매치 생성</a>
+                    <a href="jointhematch.jsp">매치 참가</a>
+                    <a href="mypage.jsp">마이 페이지</a>
+                </div>
+            </div>
+        </div>
 		    </div>
 		<br />
 	</header>

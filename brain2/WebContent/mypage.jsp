@@ -4,8 +4,14 @@
      <%@page import="dao.MemberDAO" %>
 ﻿<!DOCTYPE html>
 <%
+System.out.println("--------------------mypage.jsp--------------------");
+
 String id = (String)session.getAttribute("id");
-System.out.printf("now id : %s\n",id);
+if(id == null){
+	System.out.println("로그인 미완료 : login.jsp로 이동합니다....\n");
+}
+else System.out.printf("Now User ID : %s\n",id);
+
 MemberVO vo = new MemberVO();
 MemberDAO dao = new MemberDAO();
 vo = dao.getInfo(id);
@@ -48,7 +54,9 @@ else avg = (double)(succ/all)*100;
 	<%
 	if(id == null){
 	%>
-	<h4>로그인을 먼저 해라 ;</h4>
+	<script language="javascript">
+		location.href = "login.jsp";
+	</script>
 	<%}
 	else {%>
 	<form method="get">

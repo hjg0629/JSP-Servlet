@@ -1,31 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
+<%
+System.out.println("--------------------register.jsp--------------------");
 
+%>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>회원가입</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <style>
-        * {
-             box-sizing: border-box;
-        }
-        #HR {
-            text-align: right;
-        }
-        a {
-            text-decoration: none;
-            color: black;
-        }
-        #HL {
-            text-align: center;
-            font-size: 35px;
-        }
-        .header {
-            display: flex;
-            background: black;
-        }
-    </style>
     <script language="javascript">
     function checkIt(){
     	if(!document.userinput.id.value){
@@ -83,9 +66,7 @@
     		alert("중복 확인 에러 : ID를 입력하세요");
     		return ;
     	}
-    	console.log(inputid.id.value);
     	url = "ConfirmId?id="+inputid.id.value;
-    	console.log(url);
     	open(url,"confirm","toolbar=no, location=no,status=no,scrollbars=no,resizable=no,width=310,height=180");
     }
         
@@ -111,9 +92,21 @@
         <div id="HR"><a href="login.jsp">로그인</a> | <a href="register.jsp">회원가입</a> | <a href="alarm.jsp">ALARM</a></div>
         <br />
         <div class="header">
-            <div class="title">&nbsp;Main Page</div>
-            <div class="menu"><img src="image/menubar.png" /></div>
+        <div class="title">&nbsp;Make&nbsp;<span id="thematch">The&nbsp;Match</span></div>
+        <div class="menu">
+            <div class="dropdown" style="float:right;">
+                <button class="dropbtn"><img src="image/menubar.png" width="30" height="30" /></button>
+                <div class="dropdown-content">
+                    <a href="login.jsp">로그인</a>
+                    <a href="register.jsp">회원 가입</a>
+                    <a href="alarm.jsp">알림</a>
+                    <a href="makethematch.jsp">매치 생성</a>
+                    <a href="jointhematch.jsp">매치 참가</a>
+                    <a href="mypage.jsp">마이 페이지</a>
+                </div>
+            </div>
         </div>
+    </div>
         <br />
     </header>
 	<br />

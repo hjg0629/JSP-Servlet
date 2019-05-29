@@ -13,10 +13,11 @@ public class MakeMatchDAO {
 	}
 	public static int Insert(MatchVO vo){
 		try {			
-			
+			System.out.println("[[[[[MatchDAO의  Insert 메소드 실행....]]]]]");
+
 			conn = Myconn.getConn();
 			String sql = "insert into matches(flag1, flag2, title,stime,etime,contents,"
-					+ "addr, teamflag, needman, nowman) values(?,?,?,?,?,?,?,?,?,?)";
+					+ "addr, teamflag, needman, nowman, writer) values(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getFlag1());
 			pstmt.setString(2, vo.getFlag2());
@@ -28,16 +29,18 @@ public class MakeMatchDAO {
 			pstmt.setInt(8, vo.getTeamflag());
 			pstmt.setInt(9, vo.getNeedman());
 			pstmt.setInt(10, vo.getNowman());
-
+			pstmt.setString(11, vo.getWriter());
 			int result = pstmt.executeUpdate();
-			System.out.printf("result : %d\n", result);
 			if(result == 1) {
+				System.out.println("MatchDAO : Insert 성공");
 				return 1;
 			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("MatchDAO : Insert 실패");
+
 		return 0;
 	}
 	public MatchVO getMatch(int seqNo)throws SQLException {
@@ -64,6 +67,7 @@ public class MakeMatchDAO {
 				vo.setTeamflag(rs.getInt("teamflag"));
 				vo.setNeedman(rs.getInt("needman"));
 				vo.setNowman(rs.getInt("nowman"));
+				vo.setWriter(rs.getString("writer"));
 			}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block

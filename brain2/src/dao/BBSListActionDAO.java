@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServlet;
 import vo.MatchVO;
 import vo.Myconn; 
 
-public class BBSListActionDAO extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
+public class BBSListActionDAO extends HttpServlet {	
 	public String getDate() {
 		String SQL="select now()";
 		try {
@@ -53,7 +51,7 @@ public class BBSListActionDAO extends HttpServlet {
 	public static ArrayList<MatchVO> getList(int pageNumber){
 		ArrayList<MatchVO> list = new ArrayList<MatchVO>();
 		try {
-			Connection conn=Myconn.getConn(); ;
+			Connection conn=Myconn.getConn(); 
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			

@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import vo.Myconn;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,8 +38,16 @@ public class RegisterProc extends HttpServlet {
 			pstmt.setString(4, email1+"@"+email2);
 			pstmt.setString(5, ktid);
 			int result = pstmt.executeUpdate();
+			String pr= null;
 			if(result == 1) {
-				response.sendRedirect("login.jsp");
+				  PrintWriter out = response.getWriter(); 
+				    out.println("<html><body>"); 
+				    out.println("<script type=\"text/javascript\">"); 
+				    out.println("var popwin = window.open(\"pageA.jsp\")"); 
+				    out.println("setTimeout(function(){ popwin.close(); window.location.href='pageB.jsp';},5000)"); 
+				    out.println("</script>"); 
+				    out.println("</body></html>");
+				response.sendRedirect("login.jsp?result="+pr);
 			}
 			else response.sendRedirect("regiser.jsp");
 		} catch (Exception e) {

@@ -15,12 +15,12 @@ import javax.servlet.*;
 @WebServlet("/LoginProc")
 public class LoginProc extends HttpServlet {   
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("LoginProc 실행");
+		System.out.println("<<<<<<<<<<<<<<<<<<< LoginProc 실행 >>>>>>>>>>>>>>>>>>>>>");
 		PreparedStatement pstmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
 		String id = request.getParameter("id");
-		System.out.printf("입력받은 ID : %s",id);
+		System.out.printf("입력받은 ID : %s\n",id);
 
 		String passwd = request.getParameter("pw");
 		try {
@@ -31,17 +31,22 @@ public class LoginProc extends HttpServlet {
 			String result =null;
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				System.out.println("id 존재");
 				String userpass = rs.getString("passwd");
-				System.out.printf("userpass : %s",userpass);
-				System.out.printf("passwd : %s",passwd);
+				System.out.printf("입력받은 password : %s\n",userpass);
+				System.out.println("ID 일치\n");
 				if(userpass.equals(passwd)) {
 					//id passwd 일치
+					System.out.println("password 일치\n\n");
 					HttpSession session = request.getSession();
 					session.setAttribute("id", id);
+					System.out.println("<<<<<<<<<<<<<<<<<<< LoginProc 성공 >>>>>>>>>>>>>>>>>>>>>");
+
 					response.sendRedirect("main.jsp");
 				}
 				else {
+					System.out.println("Password 불 일치 : 로그인 실패\n");
+					System.out.println("<<<<<<<<<<<<<<<<<<< LoginProc 실패 >>>>>>>>>>>>>>>>>>>>>");
+
 					result = "passwdno";
 					response.sendRedirect("login.jsp?result="+result+"&id="+id);
 
@@ -52,7 +57,8 @@ public class LoginProc extends HttpServlet {
 				result = "idno";
 				response.sendRedirect("login.jsp?result="+result);
 
-				System.out.println("id 없엉");
+				System.out.println("ID 없음 : 로그인 실패\n");
+				System.out.println("<<<<<<<<<<<<<<<<<<< LoginProc 실패 >>>>>>>>>>>>>>>>>>>>>");
 
 				// id가 없음
 			}

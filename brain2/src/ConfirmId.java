@@ -14,7 +14,6 @@ import vo.Myconn;
 @WebServlet("/ConfirmId")
 public class ConfirmId extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("confrim id ¡¯¿‘");
 		String id = request.getParameter("id");
 		Connection conn = null;
 		PreparedStatement pstmt = null;

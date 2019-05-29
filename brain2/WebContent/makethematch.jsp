@@ -4,16 +4,28 @@
      <%@page import="dao.MemberDAO" %>
 ﻿<!DOCTYPE html>
 <%
+System.out.println("--------------------makethematch.jsp--------------------");
+
 String id = (String)session.getAttribute("id");
-System.out.printf("now id : %s\n",id);
+if(id == null){
+	System.out.println("로그인 미완료 : login.jsp로 이동합니다....\n");
+}
+else System.out.printf("Now User ID : %s\n",id);
+System.out.println("MemberVo 객체 불러오는중 ........\n");
 MemberVO vo = new MemberVO();
+System.out.println("MemberDAO 객체 생성중 ........\n");
 MemberDAO dao = new MemberDAO();
+System.out.printf("[%s]의 정보 불러오는중 .......\n",id);
 vo = dao.getInfo(id);
 int succ = vo.getSuccessMatch();
 int all = vo.getAllMatch();
+System.out.printf("[%s]의 성사된 매치 수 = %d\n",id,succ);
+System.out.printf("[%s]의 총 매치 시도수 = %d\n",id,all);
 double avg=0;
 if(succ == 0)avg=0;
 else avg = (double)(succ/all)*100;
+System.out.printf("[%s]의 매치 성사율 = %f\n",id,avg);
+
 %>
 <html>
 <head>

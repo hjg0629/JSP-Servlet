@@ -7,8 +7,13 @@
 <%@ page import="java.util.ArrayList" %>
 ﻿<!DOCTYPE html>
 <%
+System.out.println("--------------------jointhematch.jsp--------------------");
 	String id = (String)session.getAttribute("id");
-System.out.printf("now id : %s\n",id);
+	if(id == null){
+		System.out.println("로그인 미완료 : login.jsp로 이동합니다....\n");
+	}
+	else System.out.printf("Now User ID : %s\n",id);
+
 MemberVO vo = new MemberVO();
 MemberDAO dao = new MemberDAO();
 vo = dao.getInfo(id);

@@ -9,8 +9,15 @@
 <%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html>
 <%
+System.out.println("--------------------viewmatch.jsp--------------------");
+
 	String id = (String) session.getAttribute("id");
 	System.out.printf("now id : %s\n", id);
+	if(id == null){
+		System.out.println("로그인 미완료 : login.jsp로 이동합니다....\n");
+	}
+	else System.out.printf("Now User ID : %s\n",id);
+
 	MemberVO vo = new MemberVO();
 	MemberDAO dao = new MemberDAO();
 	vo = dao.getInfo(id);
@@ -34,6 +41,7 @@
 		out.println("</script>");
 	}
 	MatchVO match = new BBSListActionDAO().getMatches(seqNo);
+	
 %>
 <html>
 <head>
@@ -167,5 +175,7 @@ a:hover {
 		number : 010 - 1234 - 5678<br /> Facebook : object-oriented paradime
 		<br /> address : catholic university<br /> name : hong gil dong
 	</div>
+
+
 </body>
 </html>

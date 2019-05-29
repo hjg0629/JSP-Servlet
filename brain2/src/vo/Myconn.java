@@ -1,8 +1,7 @@
 package vo;
 import java.sql.*;
 public class Myconn {
-	private Myconn() {
-		
+	private Myconn() {	
 	}
 	public static Connection getConn()
 			throws SQLException{
