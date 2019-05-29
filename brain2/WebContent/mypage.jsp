@@ -24,7 +24,7 @@ else avg = (double)(succ/all)*100;
 <body>
 	
     <header>
-        <div id="HL"> &nbsp;<a href="main.html">CUKBM</a></div>
+        <div id="HL"> &nbsp;<a href="main.jsp">CUKBM</a></div>
 
         <div id="HR"> <%if (id == null) {%>
         <a href="login.jsp">로그인</a> | <a href="register.jsp">회원가입</a>

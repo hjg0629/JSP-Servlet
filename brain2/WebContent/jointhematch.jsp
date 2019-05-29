@@ -92,7 +92,7 @@ if(request.getParameter("pageNumber")!=null){
 		%>
 			<tr>
 				<td><%=list.get(i).getSeqNo()%></td>
-				<td><a href="jointhematch.jsp?bbsID=<%=list.get(i).getSeqNo()%>"><%=list.get(i).getTitle()%></a></td>
+				<td><a href="viewmatch.jsp?seqNo=<%=list.get(i).getSeqNo()%>"><%=list.get(i).getTitle()%></a></td>
 				<td><%=list.get(i).getStime()%></td>
 				<td><%=list.get(i).getEtime()%></td>
 				<td><%=list.get(i).getNeedman()%></td>

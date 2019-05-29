@@ -34,7 +34,6 @@
 		out.println("</script>");
 	}
 	MatchVO match = new BBSListActionDAO().getMatches(seqNo);
-	
 %>
 <html>
 <head>
@@ -168,7 +167,5 @@ a:hover {
 		number : 010 - 1234 - 5678<br /> Facebook : object-oriented paradime
 		<br /> address : catholic university<br /> name : hong gil dong
 	</div>
-
-
 </body>
 </html>

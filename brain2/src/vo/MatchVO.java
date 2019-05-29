@@ -2,7 +2,20 @@ package vo;
 import java.sql.Timestamp;
 import java.util.*;
 public class MatchVO {
+	
 	private int seqNo;
+	private Timestamp seqDate;
+	private int flag1;
+	private String flag2;
+	private String title;
+	private String stime;
+	private String etime;
+	private String contents;
+	private String addr;
+	private int teamflag;
+	private int needman;
+	private int nowman;
+	
 	public int getSeqNo() {
 		return seqNo;
 	}
@@ -75,17 +88,5 @@ public class MatchVO {
 	public void setNowman(int nowman) {
 		this.nowman = nowman;
 	}
-	private Timestamp seqDate;
-	private int flag1;
-	private String flag2;
-	private String title;
-	private String stime;
-	private String etime;
-	private String contents;
-	private String addr;
-	private int teamflag;
-	private int needman;
-	private int nowman;
-	
 	
 }
