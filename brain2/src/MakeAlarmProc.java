@@ -12,9 +12,13 @@ import vo.AlarmVO;
 import dao.AlarmDAO;
 import dao.MemberDAO;
 
+/*
+ * 왜 만들었는지 모르겠음 쓸모 없음
+ */
 @WebServlet("/MakeAlarmProc")
 public class MakeAlarmProc extends HttpServlet {
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf8");
 		System.out.println("<<<<<<<<<<<<<<<<<<< MakeMatchProc 실행 >>>>>>>>>>>>>>>>>>>>>");
 		HttpSession session = request.getSession();
@@ -22,14 +26,14 @@ public class MakeAlarmProc extends HttpServlet {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		AlarmVO vo = new AlarmVO();
-		
+
 		String jm = request.getParameter("joinman");
 		String cm = request.getParameter("createman");
 		int k = Integer.parseInt(request.getParameter("Kind"));
 		String ft = request.getParameter("finishtime").toString();
 		int f = Integer.parseInt(request.getParameter("flag"));
-		int msn  = Integer.parseInt(request.getParameter("matchseqNo"));
-		
+		int msn = Integer.parseInt(request.getParameter("matchseqNo"));
+
 		try {
 			conn = Myconn.getConn();
 			vo.setJoinman(jm);
@@ -38,17 +42,16 @@ public class MakeAlarmProc extends HttpServlet {
 			vo.setFinishtime(Timestamp.valueOf(ft));
 			vo.setFlag(f);
 			vo.setMatchseqNo(msn);
-			
+
 			int result = AlarmDAO.Insert(vo);
 			String pr = null;
-			if(result == 1) {
+			if (result == 1) {
 				System.out.println("MakeAlarmProc : Alarm Making 성공!");
 				pr = "success";
-				boolean makeresult = MemberDAO.makeMatch((String)session.getAttribute("id"));
-				response.sendRedirect("main.jsp?result="+pr);
-			}
-			else {
-				response.sendRedirect("makeasports.jsp?result="+pr);
+				boolean makeresult = MemberDAO.makeMatch((String) session.getAttribute("id"));
+				response.sendRedirect("main.jsp?result=" + pr);
+			} else {
+				response.sendRedirect("makeasports.jsp?result=" + pr);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

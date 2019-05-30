@@ -5,11 +5,13 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="dao.MatchDAO"%>
 <%@ page import="vo.MatchVO"%>
+<%@ page import="dao.PeopleDAO"%>
+<%@ page import="vo.PeopleVO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
 <%--
-viewmatch.jsp
-매치 리스트를 보여주는 페이지
+viewpeople.jsp
+현재 매치의 참가한 참가자의 리스트를 보여주는 페이지
  --%>
 <!DOCTYPE html>
 <%
@@ -34,17 +36,11 @@ viewmatch.jsp
 		avg = (double) (succ / all) * 100;
 
 	//BBS View
+	int pageNumber = 1;
 	int seqNo = 1;
 	if (request.getParameter("seqNo") != null) {
 		seqNo = Integer.parseInt(request.getParameter("seqNo"));
 	}
-	if (seqNo == 0) {
-		out.println("<script>");
-		out.println("alert('존재하지 않는 글입니다.')");
-		out.println("location.href = 'jointhematch.jsp'");
-		out.println("</script>");
-	}
-	MatchVO match = new MatchDAO().getMatches(seqNo);
 %>
 <html>
 <head>
@@ -95,7 +91,7 @@ a:hover {
 		<br />
 	</header>
 	<div class="header">
-		<div class="title">&nbsp;JOIN THE MATCH</div>
+		<div class="title">&nbsp;참가자 정보</div>
 		<div class="menu">
 			<img src="image/menubar.png" />
 		</div>
@@ -106,71 +102,53 @@ a:hover {
 	%>
 	<div class="container1">
 		<div class="row">
-			<form action="JoinTheMatchProc" method="post">
-				<div class="hidden">
-					<input type="number" id="seqNo" name="seqNo" readonly
-						value="<%=match.getSeqNo()%>">
-				</div>
-				<table id="viewertable">
-					<thead>
-						<tr>
-							<th colspan="3"
-								style="background-color: darkgray; text-align: center;">게시판
-								글</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td colspan="2">글 제목</td>
-							<td colspan="2" id="title"><%=match.getTitle()%></td>
-						</tr>
-						<tr>
-							<td colspan="2">작성자</td>
-							<td colspan="2" id="writer"><%=match.getWriter()%></td>
-						</tr>
-						<tr>
-							<td colspan="2">flag1</td>
-							<td colspan="2" id="flag1"><%=match.getFlag1()%></td>
-						</tr>
-						<tr>
-							<td colspan="2">flag2</td>
-							<td colspan="2" id="flag2"><%=match.getFlag2()%></td>
-						</tr>
-
-						<tr>
-							<td colspan="2">stime</td>
-							<td colspan="2" id="stime"><%=match.getStime()%></td>
-						</tr>
-						<tr>
-							<td colspan="2">etime</td>
-							<td colspan="2" id="etime"><%=match.getEtime()%></td>
-						</tr>
-						<tr>
-							<td colspan="2">contents</td>
-							<td colspan="2" id="contents"><%=match.getContents()%></td>
-						</tr>
-						<tr>
-							<td colspan="2">addr</td>
-							<td colspan="2" id="addr"><%=match.getAddr()%></td>
-						</tr>
-						<tr>
-							<td colspan="2">teamflag</td>
-							<td colspan="2" id="teamflag"><%=match.getTeamflag()%></td>
-						</tr>
-						<tr>
-							<td colspan="2">needman</td>
-							<td colspan="2" id="needman"><%=match.getNeedman()%></td>
-						</tr>
-						<tr>
-							<td colspan="2">nowman</td>
-							<td colspan="2" id="nowman"><%=match.getNowman()%></td>
-						</tr>
-					</tbody>
-				</table>
-				<br /> <a href="jointhematch.jsp"><p id="tablelist">목록</p></a> 
-						<input type="submit" value="참가하기">
-						<a href="viewpeople.jsp?seqNo=<%=seqNo%>">참가자</a>
-			</form>
+			<table id="viewrtable"
+				style="text-align: center; border: 1px solid #dddddd">
+				<thead>
+					<tr>
+						<th style="background-color: #eeeeee; text-align: center;">참가자</th>
+						<th style="background-color: #eeeeee; text-align: center;">전체
+							매칭 시도수</th>
+						<th style="background-color: #eeeeee; text-align: center;">매칭
+							성공 수</th>
+						<th style="background-color: #eeeeee; text-align: center;">매칭
+							성공률</th>
+						<th style="background-color: #eeeeee; text-align: center;">카카오톡
+							ID</th>
+						<th style="background-color: #eeeeee; text-align: center;">방장</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+						PeopleVO peoplevo = new PeopleVO();
+							ArrayList<PeopleVO> list = PeopleDAO.getList(pageNumber, seqNo);
+							for (int i = 0; i < list.size(); i++) {
+								MemberVO membervo = new MemberVO();
+								MemberDAO memberdao = new MemberDAO();
+								membervo = memberdao.getInfo(list.get(i).getJoinman());
+					%>
+					<tr>
+						<td><%=list.get(i).getJoinman()%></td>
+						<td><%=membervo.getAllMatch()%></td>
+						<td><%=membervo.getSuccessMatch()%></td>
+						<td>수식</td>
+						<td><%=membervo.getKtid()%></td>
+						<%
+							if (list.get(i).getFlag() == 1) {
+						%>
+						<td>O</td>
+						<%
+							} else {
+						%>
+						<td>X</td>
+						<%
+							}
+								}
+						%>
+					</tr>
+				</tbody>
+			</table>
+			<br /> <a href="jointhematch.jsp"><p id="tablelist">목록</p></a>
 		</div>
 	</div>
 	<%

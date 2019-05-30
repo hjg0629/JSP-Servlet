@@ -26,10 +26,10 @@
 <%
 	result = null;
 	}
-	
+
 	//list View
-	int pageNumber=1;
-	if(request.getParameter("pageNumber")!=null){
+	int pageNumber = 1;
+	if (request.getParameter("pageNumber") != null) {
 		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	}
 %>
@@ -74,7 +74,7 @@ tbody td:nth-child(3) {
 <body>
 	<header>
 		<div id="HL">
-			&nbsp;<a href="main.html">CUKBM</a>
+			&nbsp;<a href="main.jsp">CUKBM</a>
 		</div>
 		<div id="HR">
 			<a href="login.html">로그인</a> | <a href="register.html">회원가입</a> | <a
@@ -120,7 +120,7 @@ tbody td:nth-child(3) {
 		<tbody>
 			<%
 				AlarmVO alarm = new AlarmVO();
-				ArrayList<AlarmVO> list = AlarmDAO.getList(pageNumber,id);
+				ArrayList<AlarmVO> list = AlarmDAO.getList(pageNumber, id);
 				for (int i = 0; i < list.size(); i++) {
 					MatchVO match = new MatchVO();
 					MatchDAO matchdao = new MatchDAO();
@@ -128,7 +128,8 @@ tbody td:nth-child(3) {
 			%>
 			<tr>
 				<td colspan="3"><%=list.get(i).getSeqNo()%></td>
-				<td colspan="5"><a href="viewalarm.jsp?seqNo=<%=list.get(i).getSeqNo()%>"><%=match.getFlag2()%></a></td>
+				<td colspan="5"><a
+					href="viewalarm.jsp?seqNo=<%=list.get(i).getSeqNo()%>"><%=match.getFlag2()%></a></td>
 				<td colspan="5"><%=match.getTitle()%></td>
 				<td colspan="5"><%=match.getNowman()%></td>
 			</tr>
