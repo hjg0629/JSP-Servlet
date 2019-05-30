@@ -96,68 +96,67 @@ a:hover {
 	<%
 		if (id != null) {
 	%>
-	<div class="container">
-		<div class="row">
-			<table style="text-align: center; border: 1px solid #dddddd">
-				<thead>
-					<tr>
-						<th colspan="3"
-							style="background-color: #eeeeee; text-align: center;">게시판 글</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td colspan="2" style="width: 20px">글 제목</td>
-						<td colspan="2"><%=match.getTitle() %></td>
-					</tr>
-					<tr>
-						<td colspan="2">작성자</td>
-						<td colspan="2"><%=match.getWriter() %></td>
-					</tr>
-					<tr>
-						<td colspan="2">flag1</td>
-						<td colspan="2"><%=match.getFlag1()%></td>
-					</tr>
-					<tr>
-						<td colspan="2">flag2</td>
-						<td colspan="2"><%=match.getFlag2()%></td>
-					</tr>
+	<div class="container1">
+        <div class="row">
+            <table id="viewertable">
+                <thead>
+                    <tr>
+                        <th colspan="3"
+                            style="background-color: darkgray; text-align: center;">게시판 글</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">글 제목</td>
+                        <td colspan="2"><%=match.getTitle() %></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">작성자</td>
+                        <td colspan="2"><%=match.getWriter() %></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">flag1</td>
+                        <td colspan="2"><%=match.getFlag1()%></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">flag2</td>
+                        <td colspan="2"><%=match.getFlag2()%></td>
+                    </tr>
 
-					<tr>
-						<td colspan="2">stime</td>
-						<td colspan="2"><%=match.getStime()%></td>
-					</tr>
-					<tr>
-						<td colspan="2">etime</td>
-						<td colspan="2"><%=match.getEtime()%></td>
-					</tr>
-					<tr>
-						<td colspan="2">contents</td>
-						<td colspan="2"><%=match.getContents()%></td>
-					</tr>
-					<tr>
-						<td colspan="2">addr</td>
-						<td colspan="2"><%=match.getAddr()%></td>
-					</tr>
-					<tr>
-						<td colspan="2">teamflag</td>
-						<td colspan="2"><%=match.getTeamflag()%></td>
-					</tr>
-					<tr>
-						<td colspan="2">needman</td>
-						<td colspan="2"><%=match.getNeedman()%></td>
-					</tr>
-					<tr>
-						<td colspan="2">nowman</td>
-						<td colspan="2"><%=match.getNowman()%></td>
-					</tr>
-				</tbody>
-			</table>
-
-			<a href="jointhematch.jsp">목록</a>
-
-		</div>
-	</div>
+                    <tr>
+                        <td colspan="2">stime</td>
+                        <td colspan="2"><%=match.getStime()%></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">etime</td>
+                        <td colspan="2"><%=match.getEtime()%></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">contents</td>
+                        <td colspan="2"><%=match.getContents()%></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">addr</td>
+                        <td colspan="2"><%=match.getAddr()%></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">teamflag</td>
+                        <td colspan="2"><%=match.getTeamflag()%></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">needman</td>
+                        <td colspan="2"><%=match.getNeedman()%></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">nowman</td>
+                        <td colspan="2"><%=match.getNowman()%></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <a href="jointhematch.jsp"><p id="tablelist">목록으로 돌아가기</p></a>
+        </div>
+    </div>
 	<%
 		} else {
 	%>

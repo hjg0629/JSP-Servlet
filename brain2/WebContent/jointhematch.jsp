@@ -76,9 +76,9 @@ if(request.getParameter("pageNumber")!=null){
 	<%
 		if(id != null){
 	%>
-	<div class="container">
+	<div class="container1">
 	<div class="row">
-	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+	<table id = "viewrtable" style="text-align: center; border: 1px solid #dddddd">
 		<thead>
 			<tr>
 				<th style="background-color: #eeeeee; text-align:center;">번호</th>
