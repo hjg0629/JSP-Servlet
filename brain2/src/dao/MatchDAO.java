@@ -9,7 +9,9 @@ import vo.Myconn;
 /*
  * MatchDAO 매치 DAO
  * - Insert 매치정보를 DB에 삽입해주는 함수
+ * 			DB에 삽입할때 nowman은 1의 상태로 들어가게됨
  * - Update 매치 정보중 인원이 참가했을때 그 게시글의 현재 참가인원을 +=1 해주는 함수
+ * 			만약 참가인원이 최대인원과 일치한다면 작성자 알림테이블 삽입
  * - getCur MakeMatchProc.java에서 매치 생성자를 그 매치의 참가자로 넣을때 처리를 위한 함수, 매치 게시글의 가장 마지막을 반환함
  * - getNext getList를 위한 함수
  * - getList 매치정보를 리스트하기 위한 함수, 매치정보 10개를 리스트형태로 반환함

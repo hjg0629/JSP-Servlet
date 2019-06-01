@@ -64,21 +64,13 @@
 		</div>
 		<br />
 		<div class="header">
-			<div class="title">&nbsp;Main Page</div>
+			<div class="title">&nbsp;MYPage</div>
 			<div class="menu">
 				<img src="image/menubar.png" />
 			</div>
 		</div>
 		<br />
 	</header>
-	<div class="Bheader">
-		<div class="title">&nbsp;MYPAGE</div>
-		<div class="menu">
-			<img src="image/menubar.png" />
-		</div>
-	</div>
-	<br />
-	<br />
 	<%
 		if (id == null) {
 	%>
