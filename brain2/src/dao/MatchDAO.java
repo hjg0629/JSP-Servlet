@@ -83,6 +83,37 @@ public class MatchDAO {
 		System.out.println("MatchDAO : Update 실패");
 		return 0;
 	}
+	
+	// 매치 수정 함수
+		public static int UpdateMatch(MatchVO vo) {
+			try {
+				System.out.println("[[[[[MatchDAO의  UpdateMatch 메소드 실행....]]]]]");
+
+				conn = Myconn.getConn();
+				String sql = "update matches set flag1 = ?, title = ?, stime = ?,etime = ?,contents = ?,"
+						+ "addr = ?, teamflag  = ?, needman = ? where seqNo = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, vo.getFlag1());
+				pstmt.setString(2, vo.getTitle());
+				pstmt.setString(3, vo.getStime());
+				pstmt.setString(4, vo.getEtime());
+				pstmt.setString(5, vo.getContents());
+				pstmt.setString(6, vo.getAddr());
+				pstmt.setInt(7, vo.getTeamflag());
+				pstmt.setInt(8, vo.getNeedman());
+				pstmt.setInt(9, vo.getSeqNo());
+				int result = pstmt.executeUpdate();
+				
+				if (result == 1) {
+					System.out.println("MatchDAO : Update 성공");
+					return 1;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("MatchDAO : Update 실패");
+			return 0;
+		}
 
 	public static int getCur() {
 		String SQL = "select seqNo from matches order by seqNo desc";

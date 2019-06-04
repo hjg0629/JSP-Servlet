@@ -8,8 +8,8 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
 <%--
-viewmatch.jsp
-매치 리스트를 보여주는 페이지
+updatematch.jsp
+매치 수정 페이지
  --%>
 <!DOCTYPE html>
 <%
@@ -106,7 +106,7 @@ a:hover {
 	%>
 	<div class="container1">
 		<div class="row">
-			<form action="JoinTheMatchProc" method="post">
+			<form action="UpdateMatchProc" method="post">
 				<div class="hidden">
 					<input type="number" id="seqNo" name="seqNo" readonly
 						value="<%=match.getSeqNo()%>">
@@ -122,55 +122,63 @@ a:hover {
 					<tbody>
 						<tr>
 							<td colspan="2">글 제목</td>
-							<td colspan="2" id="title"><%=match.getTitle()%></td>
+							<td colspan="2"><input type="text" name="title"
+								value="<%=match.getTitle()%>"></td>
 						</tr>
 						<tr>
 							<td colspan="2">작성자</td>
-							<td colspan="2" id="writer"><%=match.getWriter()%></td>
+							<td colspan="2"><input type="text" readonly name="writer"
+								value="<%=match.getWriter()%>"></td>
 						</tr>
 						<tr>
 							<td colspan="2">flag1</td>
-							<td colspan="2" id="flag1"><%=match.getFlag1()%></td>
+							<td colspan="2"><input type="text" name="flag1"
+								value="<%=match.getFlag1()%>"></td>
 						</tr>
 						<tr>
 							<td colspan="2">flag2</td>
-							<td colspan="2" id="flag2"><%=match.getFlag2()%></td>
+							<td colspan="2"><input type="text" name="flag2"
+								value="<%=match.getFlag2()%>"></td>
 						</tr>
 
 						<tr>
 							<td colspan="2">stime</td>
-							<td colspan="2" id="stime"><%=match.getStime()%></td>
+							<td colspan="2"><input type="text" name="stime"
+								value="<%=match.getStime()%>"></td>
 						</tr>
 						<tr>
 							<td colspan="2">etime</td>
-							<td colspan="2" id="etime"><%=match.getEtime()%></td>
+							<td colspan="2"><input type="text" name="etime"
+								value="<%=match.getEtime()%>"></td>
 						</tr>
 						<tr>
 							<td colspan="2">contents</td>
-							<td colspan="2" id="contents"><%=match.getContents()%></td>
+							<td colspan="2"><input type="text" name="contents"
+								value="<%=match.getContents()%>"></td>
 						</tr>
 						<tr>
 							<td colspan="2">addr</td>
-							<td colspan="2" id="addr"><%=match.getAddr()%></td>
+							<td colspan="2"><input type="text" name="addr"
+								value="<%=match.getAddr()%>"></td>
 						</tr>
 						<tr>
 							<td colspan="2">teamflag</td>
-							<td colspan="2" id="teamflag"><%=match.getTeamflag()%></td>
+							<td colspan="2"><input type="text" readonly name="teamflag"
+								value="<%=match.getTeamflag()%>"></td>
 						</tr>
 						<tr>
 							<td colspan="2">needman</td>
-							<td colspan="2" id="needman"><%=match.getNeedman()%></td>
+							<td colspan="2"><input type="text" name="needman"
+								value="<%=match.getNeedman()%>"></td>
 						</tr>
 						<tr>
 							<td colspan="2">nowman</td>
-							<td colspan="2" id="nowman"><%=match.getNowman()%></td>
+							<td colspan="2"><input type="text" readonly name="nowman"
+								value="<%=match.getNowman()%>"></td>
 						</tr>
 					</tbody>
 				</table>
-				<br /> <a href="jointhematch.jsp"><p id="tablelist">목록</p></a> 
-						<input type="submit" value="참가하기">
-						<a href="viewpeople.jsp?seqNo=<%=seqNo%>">참가자</a>
-						<a href="updatematch.jsp?seqNo=<%=seqNo%>">수정</a>
+				<input type="submit" value="수정하기">
 			</form>
 		</div>
 	</div>
