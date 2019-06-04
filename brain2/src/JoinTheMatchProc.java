@@ -29,6 +29,12 @@ import vo.AlarmVO;
  * 3. people 테이블에 참가자 정보 삽입
  * 4. 참가한 매치의 nowman+=1 해줌
  * 5. 매치의 목표인원과 현재인원이 일치한다면 매치 생성자 알림테이블에 삽입
+ * 6. 인원 참가시 그냥 알림
+ * 
+ * 알림종류
+ * -1- 매치인원 충족시
+ * -2- 매치인원 참가시
+ * -3- 날짜 지났을 때 // 여기서구현 안됨
  */
 
 @WebServlet("/JoinTheMatchProc")
@@ -84,6 +90,19 @@ public class JoinTheMatchProc extends HttpServlet {
 				alarmvo.setMatchseqNo(vo.getSeqNo());
 				AlarmDAO.Insert(alarmvo);
 			}
+			//인원 참가시 알람
+			vo = matchdao.getMatches(Integer.parseInt(request.getParameter("seqNo")));
+			if(session.getAttribute("id").toString() != vo.getWriter()) {
+				AlarmVO alarmvo = new AlarmVO();
+				alarmvo.setCreateman(vo.getWriter());
+				alarmvo.setJoinman(session.getAttribute("id").toString());
+				alarmvo.setKind(2);
+				alarmvo.setFinishtime(java.sql.Timestamp.valueOf(vo.getEtime()));
+				alarmvo.setFlag(0);
+				alarmvo.setMatchseqNo(vo.getSeqNo());
+				AlarmDAO.Insert(alarmvo);
+			}
+			response.sendRedirect("viewmatch.jsp?seqNo="+vo.getSeqNo());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
