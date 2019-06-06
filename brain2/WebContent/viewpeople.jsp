@@ -9,6 +9,12 @@
 <%@ page import="vo.PeopleVO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
+<%
+response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+response.setHeader("Cache-Control", "no-cache"); //HTTP 1.1
+response.setHeader("Cache-Control", "no-store"); //HTTP 1.1
+response.setDateHeader("Expires", 0L); // Do not cache in proxy server
+%>
 <%--
 viewpeople.jsp
 현재 매치의 참가한 참가자의 리스트를 보여주는 페이지

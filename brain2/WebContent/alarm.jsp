@@ -9,8 +9,15 @@
 <%@ page import="vo.MatchVO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
+<%
+response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+response.setHeader("Cache-Control", "no-cache"); //HTTP 1.1
+response.setHeader("Cache-Control", "no-store"); //HTTP 1.1
+response.setDateHeader("Expires", 0L); // Do not cache in proxy server
+%>
 <!DOCTYPE html>
 <%
+
 	System.out.println("--------------------main.jsp--------------------");
 	String id = (String) session.getAttribute("id");
 	if (id == null) {
@@ -33,6 +40,11 @@
 		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	}
 %>
+<%if(id == null){ %>
+ 	 <script language="javascript">
+            location.href="login.jsp";
+            </script>	<%}%>
+            
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8" />
@@ -77,9 +89,12 @@ tbody td:nth-child(3) {
 			&nbsp;<a href="main.jsp">CUKBM</a>
 		</div>
 		<div id="HR">
-			<a href="login.html">로그인</a> | <a href="register.html">회원가입</a> | <a
-				href="alarm.html">ALARM&nbsp;</a>
-		</div>
+        <%if (id == null) {%>
+        <a href="login.jsp">로그인</a> | <a href="register.jsp">회원가입</a>
+         <%} 
+         else {%>
+          <a href="mypage.jsp"><%=id %></a> | <a href="LogoutProc">로그아웃</a>
+        <%} %> | <a href="alarm.jsp">ALARM</a></div>
 		<br />
 		<div class="header">
 			<div class="title">&nbsp;My Alarm</div>
